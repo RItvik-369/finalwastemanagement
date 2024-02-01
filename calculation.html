@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Waste Management - Calculation</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="script.js" defer></script>
+  <style>
+    
+    body{
+        
+       
+        background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 4%, rgba(101,7,101,1) 58%, rgba(196,0,255,1) 100%);
+    }
+h1{
+    justify-content:center;
+    text-align:center;
+
+    color:white;
+    /* text-decoration:  */
+} 
+
+
+/*  purana wala code  */
+
+
+#calculation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .box {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 1.5em;
+    width: 300px;
+  }
+
+  label {
+    font-size: 1.7em
+  }
+
+  button {
+    padding: 10px;
+    font-size: 1em;
+  }
+
+/* purana wala code */
+
+
+/* naya wala code */
+.goodlookingboxtomake{
+
+    
+    width : 500px;
+    height:600px;
+    border : 10px solid white;
+
+}
+
+.mar{
+    margin-left: 80px;
+}
+
+
+</style>
+
+</head>
+<body>
+  <header>
+    <h1>Trash To Treasure, Earth's Pleasure</h1>
+    <h3>Welcome to Our Waste Management Initiative!</h3>
+  </header>
+`
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+
+
+
+
+    
+
+
+      <li><a href="calculation.html ">Calculation Section</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <section id="calculation">
+    <div class="goodlookingboxtomake">
+    <h2 class="mar">Calculation Section</h2>
+    
+    <label for="dustbins"  class="mar">Number of Dustbins:</label>
+    <input type="number"  class="mar" id="dustbins" placeholder="Enter number of dustbins" min="1">
+    <br>
+
+    <label for="dustbinVolume"  class="mar" >Volume of One Dustbin (cubic meters):</label>
+    <input type="number" id="dustbinVolume"  class="mar" placeholder="Enter volume of one dustbin" min="1">
+    <br>
+
+    <label for="boxNumber"  class="mar" >Number of Boxes:</label>
+    <input type="number"  class="mar" id="boxNumber" placeholder="Enter number of boxes" min="1">
+    <br>
+
+    <label for="boxVolume " class="mar">Volume of One Box (cubic meters):</label>
+    <input type="number" id="boxVolume"  class="mar" placeholder="Enter volume of one box" min="1">
+    <br>
+
+    <button onclick="calculateDays()">Calculate</button>
+
+    <!-- Display result -->
+    <p id="result"></p>
+
+</div>
+
+  </section>
+
+  <footer>
+    <p>Team DL DAV Shalimar Bagh</p>
+  </footer>
+
+  <script>
+  function calculateDays() {
+    // Retrieve input values
+    const dustbinsInput = document.getElementById('dustbins');
+    const dustbinVolumeInput = document.getElementById('dustbinVolume');
+    const boxesInput = document.getElementById('boxNumber');
+    const boxVolumeInput = document.getElementById('boxVolume');
+
+    // Validate and reset values less than 1
+    validateAndResetInput(dustbinsInput);
+    validateAndResetInput(dustbinVolumeInput);
+    validateAndResetInput(boxesInput);
+    validateAndResetInput(boxVolumeInput);
+
+    // Get the validated input values
+    const dustbins = parseFloat(dustbinsInput.value);
+    const dustbinVolume = parseFloat(dustbinVolumeInput.value);
+    const boxes = parseFloat(boxesInput.value);
+    const boxVolume = parseFloat(boxVolumeInput.value);
+
+    // Perform the calculations
+    const totalDustbinVolume = dustbins * dustbinVolume;
+    const totalBoxVolume = boxes * boxVolume;
+    const daysToFillBoxes = totalBoxVolume / (totalDustbinVolume * 3 / 4);
+
+    // Display the result
+    const resultParagraph = document.getElementById('result');
+    if (daysToFillBoxes <= 30) {
+      resultParagraph.textContent = `It will take approximately ${daysToFillBoxes.toFixed(2)} days to fill all the boxes.`;
+    } else {
+      const months = Math.floor(daysToFillBoxes / 30);
+      const remainingDays = daysToFillBoxes % 30;
+      resultParagraph.textContent = `It will take approximately ${months} months and ${remainingDays.toFixed(0)} days to fill all the boxes.`;
+    }
+  }
+
+  function validateAndResetInput(inputElement) {
+    // Validate and reset value to 1 if less than 1
+    if (parseFloat(inputElement.value) < 1 || isNaN(parseFloat(inputElement.value))) {
+      inputElement.value = '1';
+    }
+  }
+</script>
+</body>
+</html>
+</body>
+</html>
+
+
